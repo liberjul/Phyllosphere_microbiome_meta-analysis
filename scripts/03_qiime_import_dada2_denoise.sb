@@ -1,0 +1,66 @@
+#!/bin/bash --login
+########## Define Resources Needed with SBATCH Lines ##########
+
+#SBATCH --time=04:00:00             # limit of wall clock time - how long the job will run (same as -t)
+#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
+#SBATCH --cpus-per-task=24          # number of CPUs (or cores) per task (same as -c)
+#SBATCH --mem=32G                   # memory required per node - amount of memory (in bytes)
+#SBATCH --job-name=qiime_import_denoise_<target>_<region>_<layout>        # you can give your job a name for easier identification (same as -J)
+#SBATCH --output=%x-%j.SLURMout
+
+########## Command Lines to Run ##########
+
+conda activate qiime2-2020.8
+
+FP=~/He_Lab/phyllosphere_meta-analysis/SRA_files
+QFP=~/He_Lab/phyllosphere_meta-analysis/Qiime2_files
+
+TARGET=<target>
+REGION=<region>
+LAYOUT=<layout>
+i="$TARGET"_"$REGION"_"$LAYOUT"
+
+if [[ $LAYOUT == "pe" ]]; then
+  qiime tools import \
+    --type 'SampleData[PairedEndSequencesWithQuality]' \
+    --input-path $FP/"$TARGET"_"$REGION"_pe/ \
+    --input-format CasavaOneEightSingleLanePerSampleDirFmt \
+    --output-path "$QFP"/demux-paired-end-"$TARGET"_"$REGION".qza
+
+  qiime dada2 denoise-paired \
+    --i-demultiplexed-seqs "$QFP"/demux-paired-end-"$TARGET"_"$REGION".qza \
+    --p-trunc-len-f 0 \
+    --p-trunc-len-r 0 \
+    --p-n-threads 24 \
+    --verbose \
+    --o-denoising-stats "$QFP"/feature_table/dada2-stats_1_$i.qza \
+    --o-representative-sequences "$QFP"/feature_table/rep-seqs_1_$i.qza \
+    --o-table "$QFP"/feature_table/table_1_$i.qza
+
+elif [[ $LAYOUT == "se" ]]; then
+  qiime tools import \
+    --type 'SampleData[SequencesWithQuality]' \
+    --input-path $FP/"$TARGET"_"$REGION"_se/ \
+    --input-format CasavaOneEightSingleLanePerSampleDirFmt \
+    --output-path "$QFP"/demux-single-end-"$TARGET"_"$REGION".qza
+
+  qiime dada2 denoise-single \
+    --i-demultiplexed-seqs "$QFP"/demux-single-end-"$TARGET"_"$REGION".qza \
+    --p-n-threads 24 \
+    --p-trunc-len 0 \
+    --verbose \
+    --o-denoising-stats "$QFP"/feature_table/dada2-stats_1_$i.qza \
+    --o-representative-sequences "$QFP"/feature_table/rep-seqs_1_$i.qza \
+    --o-table "$QFP"/feature_table/table_1_$i.qza
+fi
+qiime tools export \
+  --input-path "$QFP"/feature_table/rep-seqs_1_$i.qza \
+  --output-path "$QFP"/exported_feature_table/rep-seqs_1_$i
+
+qiime tools export \
+  --input-path "$QFP"/feature_table/table_1_$i.qza \
+  --output-path "$QFP"/exported_feature_table/table_1_$i
+
+conda deactivate
+
+scontrol show job $SLURM_JOB_ID     ### write job information to output file

@@ -1,0 +1,17 @@
+#!/bin/bash --login
+########## Define Resources Needed with SBATCH Lines ##########
+
+#SBATCH --time=12:00:00             # limit of wall clock time - how long the job will run (same as -t)
+#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
+#SBATCH --cpus-per-task=24          # number of CPUs (or cores) per task (same as -c)
+#SBATCH --mem=1G                   # memory required per node - amount of memory (in bytes)
+#SBATCH --job-name=01_run_cutadapt       # you can give your job a name for easier identification (same as -J)
+#SBATCH --output=%x-%j.SLURMout
+
+########## Command Lines to Run ##########
+
+module load GCC/7.3.0-2.30  OpenMPI/3.1.1 cutadapt/2.1-Python-3.6.6
+
+python ~/He_Lab/phyllosphere_meta-analysis/scripts/01_trimming_seqs.py
+
+scontrol show job $SLURM_JOB_ID     ### write job information to output file

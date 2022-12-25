@@ -1,0 +1,26 @@
+#!/bin/bash --login
+########## Define Resources Needed with SBATCH Lines ##########
+
+#SBATCH --time=6:00:00             # limit of wall clock time - how long the job will run (same as -t)
+#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
+#SBATCH --cpus-per-task=6          # number of CPUs (or cores) per task (same as -c)
+#SBATCH --mem=1G                   # memory required per node - amount of memory (in bytes)
+#SBATCH --job-name=sra_download_missing       # you can give your job a name for easier identification (same as -J)
+#SBATCH --output=%x-%j.SLURMout
+
+########## Command Lines to Run ##########
+
+module load SRA-Toolkit/2.10.7-centos_linux64
+
+FP=~/He_Lab/phyllosphere_meta-analysis/SRA_files
+cd $FP/uncut_seqs
+while IFS= read -r line
+do
+  # TARGET=$(echo $line | cut -f1 -d' ')
+  # REGION=$(echo $line | cut -f2 -d' ')
+  # SRA_ACC=$(echo $line | cut -f4 -d' ')
+  echo $line
+  fasterq-dump $line
+done < $FP/../scripts/not_downloaded.txt
+
+cd $FP/../scripts

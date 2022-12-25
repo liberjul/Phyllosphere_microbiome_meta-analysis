@@ -1,0 +1,3 @@
+total 15936
+-rw-r----- 1 liberjul plb  4811600 Jun 20 00:02 JL_SRR10002649_L001_R1_001.cutadapt.fastq.gz
+-rw-r----- 1 liberjul plb 11464238 Jun 20 00:02 JL_SRR10002649_L001_R2_001.cutadapt.fastq.gz

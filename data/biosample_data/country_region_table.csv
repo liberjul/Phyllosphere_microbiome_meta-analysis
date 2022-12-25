@@ -1,0 +1,129 @@
+"","country","region","count","color"
+"1","United States","Oregon",4697,-0.663837643295065
+"2",NA,NA,1900,0.133120362981619
+"3","United States","California",1619,0.621160136706061
+"4","United States","Michigan",999,-0.823673732353957
+"5","United States","Mississippi",715,-0.285649257049132
+"6","China","Shanghai",692,-0.50108755433728
+"7","China","Fujian",425,-0.873979382366706
+"8","China","Chongqing",408,0.351274957625503
+"9","Canada","Manitoba",382,0.0414799341287141
+"10","United States","Maryland",331,-0.0055818076343732
+"11","United States","Massachusetts",303,0.0865753757706356
+"12","United States","Hawai'i",286,-0.229168305126052
+"13","China","Baotou",273,-2.08263889495827
+"14","Denmark",NA,266,-1.95707264933806
+"15","Canada","Saskatchewan",256,-0.794098613230805
+"16","Italy",NA,252,-1.14049036553617
+"17","Switzerland",NA,232,1.86832099015131
+"18","Canada","Quebec",220,-0.128774531220416
+"19","United States","Minnesota",216,-0.824979232275364
+"20","China","Gansu",197,0.113555092886057
+"21","United States","North Carolina",194,0.0230885709045522
+"22","Germany","Baden-Württemberg",160,-0.254731478954591
+"23","United States","Texas",158,-0.3223624359819
+"24","United States","Washington",142,0.659645871022052
+"25","United States",NA,129,-0.18946101191079
+"26","South Korea","Seoul Capital",128,0.815619218604769
+"27","China","Hunan",125,0.333217184586531
+"28","China","Shangdong",124,-3.45805212750914
+"29","Sweden","Skåne",120,-0.170453194538955
+"30","China","Hebei",112,0.786533737827376
+"31","Chile",NA,108,0.0746394208557481
+"32","China","Yunnan",107,-0.341546600568062
+"33","China","Zhejiang",103,-0.430557227886537
+"34","China","Jiangsu",100,0.61710255674072
+"35","France","Nouvelle-Aquitaine",98,-0.151408775680505
+"36","China","Inner Mongolia Autonomous Region",94,-1.23327134244433
+"37","United States","Florida",94,0.393846247437302
+"38","China","Liaoning",90,0.0625638414787715
+"39","Panama","Chiriqui",88,0.758098331545737
+"40","Israel",NA,85,-1.26112271512666
+"41","United States","Oklahoma",82,-0.767843994652409
+"42","China",NA,81,0.34306624771613
+"43","Austria","Tyrol",74,-1.20049104577519
+"44","Greece","Thessaly",72,-0.705765232882939
+"45","Sweden",NA,68,-0.591796793393001
+"46","China","Sichuan",67,0.639286612932087
+"47","China","Beijing",65,0.340707419454333
+"48","Cameroon","Centre",64,0.256584055258529
+"49","Germany","Mecklenburg-Vorpommern",64,-2.58861365502034
+"50","United States","Colorado",60,-1.09119706790308
+"51","Canada","British Columbia",56,-0.793063197611051
+"52","France","Normandy",54,-1.28878325398745
+"53","Belgium","Flemish Region",53,0.488478598243452
+"54","Sweden","Ångermanland",53,0.730146422068076
+"55","Canada","Ontario",52,-0.501314528242333
+"56","Germany","Hesse",49,1.18264367417397
+"57","Greece","Central Macedonia",49,0.0667124267604634
+"58","China","Tibet",48,0.747810902579899
+"59","United Kingdom","West Midlands",48,0.13297014016603
+"60","Costa Rica","Guanacaste",47,-1.52418167656736
+"61","United States","Missouri",47,-0.0287937419368493
+"62","United States","Vermont",45,0.0115294195190177
+"63","Germany","Rhineland-Palatinate",42,-0.434399141734472
+"64","United States","Wisconsin",42,0.177162723163684
+"65","United States","Idaho",37,-1.27434510299905
+"66","France","Strasbourg",36,0.341089973553245
+"67","Spain","Segovia",36,-0.935577141832375
+"68","New Zealand","Manawat?-Whanganui",33,-2.00239349002843
+"69","United States","Virginia",32,1.8740243254942
+"70","France","Occitanie",30,0.205797991610692
+"71","United States","Pennsylvania",30,-1.4520229050274
+"72","China","Guangdong",29,0.920873619126244
+"73","Argentina",NA,24,-0.0780014902338198
+"74","Singapore",NA,24,0.0564477956691745
+"75","China","Hainan",23,-0.0386788948373087
+"76","Italy","Trentino",23,1.83369401866497
+"77","China","Henan",22,0.415450726575841
+"78","Panama","Bocas del Toro",20,0.434701845579477
+"79","New Zealand","Bay of Plenty",19,0.59581033682435
+"80","United States","South Dakota",19,-0.781506679875813
+"81","Spain","Soria",18,0.0407717242763266
+"82","Spain","Toledo",17,0.0565383476225703
+"83","Sweden","Uppland",16,1.74441615525623
+"84","Taiwan",NA,16,-1.78816143644985
+"85","Germany","Thuringia",15,-0.623668586704366
+"86","Mexico","Oaxaca",13,-1.63602138122689
+"87","Australia","New South Wales",12,-0.216644543373015
+"88","Canada","Nova Scotia",12,-0.257703176012512
+"89","South Korea","Gwandong",12,0.608579648649296
+"90","Australia",NA,11,-1.70556546281562
+"91","United Kingdom","Norfolk",11,1.08687256538167
+"92","Brazil","Amazon",10,0.9211604070139
+"93","Portugal","Centro",10,-0.177313066551551
+"94","United States","Delaware",10,-0.280319742923826
+"95","China","Shanzi",9,0.499426008514274
+"96","New Zealand","Tasman District",9,-0.324558490517185
+"97","Italy","Udine",8,-2.48310718088905
+"98","Serbia",NA,8,-0.418868105735472
+"99","United States","Georgia",8,-0.755207331251
+"100","United States","Utah",7,-0.221963475890163
+"101","China","Anhui",6,-1.26882169990855
+"102","India","Himachal Pradesh",6,0.0796963707215047
+"103","Israel","Southern",6,-1.14235673516411
+"104","Mexico","Durango",6,0.230349184890096
+"105","India","Andaman Island",4,0.277950938311617
+"106","Korea",NA,4,0.93171153782446
+"107","Brazil","São Paulo",3,0.504379253333321
+"108","New Zealand","Auckland",3,-0.107491201356471
+"109","Russia","Yalta",3,-1.95275939173281
+"110","United Kingdom","Norwich",3,-0.349103057267834
+"111","United States","Alaska",3,0.361063099073296
+"112","Colombia","Isla de Providencia",2,-0.0762691222856336
+"113","Germany","Brandenburg",2,-0.279689019572647
+"114","Israel","Acre",2,0.787251186506275
+"115","Israel","Haifa",2,-2.53263518661584
+"116","Madagascar","Moramanga",2,0.551580448715079
+"117","New Zealand","Hawke's Bay",2,-0.163893250547522
+"118","Pakistan","Punjab",2,0.349789906459445
+"119","China","Jilin",1,1.74621635913297
+"120","Colombia","Magdalena",1,0.902218731790978
+"121","France","Grand Est",1,0.47331045969152
+"122","Madagascar","Ihorombe",1,-0.809796741141004
+"123","Madagascar","Vatovavy",1,-0.597677747239661
+"124","Malaysia","Selangor",1,-0.0444226918972382
+"125","New Zealand","Waikato",1,1.80711992267398
+"126","New Zealand","Wellington",1,0.956964866387951
+"127","United Kingdom","London",1,1.14948084029523
+"128","United States","Arizona",1,1.02283542868635

@@ -1,0 +1,7 @@
+OTU_ID	Rank_1	Rank_2	Rank_3	Rank_4	Rank_5	Rank_6	Rank_7	Rank_8	High_level_taxonomy	HL_hit_percent_id	HL_hit_query_cover	Consistent_hierarchy
+fc02c4f0f0e9bc9619718c4304bc243c	Bacteria_1	Proteobacteria_1	Gammaproteobacteria_1	Burkholderiales_1	Comamonadaceae_1				Bacteria_Proteobacteria	100.000	100	0
+abee79329170a01ce0b9b0da060c32d2	Bacteria_1	Bdellovibrionota_1	Oligoflexia_1	Oligoflexales_1	Oligoflexus_1				Bacteria_Bdellovibrionota	99.784	100	0
+6f0141a167ad8eec0155d868dbeee3a6	Bacteria_1	Cyanobacteria_1	Cyanobacteriia_1	Chloroplast_1					Chloroplast	99.785	100	0
+781240fd24e6846224a1a4c3da23134e	Bacteria_1	Cyanobacteria_1	Cyanobacteriia_1	Chloroplast_1					Chloroplast	99.400	97	0
+d04a9d6a22d6426d1690f639d9e7e583	Bacteria_1	Bdellovibrionota_1	Oligoflexia_1	Oligoflexales_1	Oligoflexus_1				Bacteria_Bdellovibrionota	99.569	100	0
+1f2e44783a74704c27e422cd46052a51	Bacteria_1	Firmicutes_1	Bacilli_1	Entomoplasmatales_1	Spiroplasmataceae_1	Spiroplasma_1			Bacteria_Firmicutes	93.478	100	0

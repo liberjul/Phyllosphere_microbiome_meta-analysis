@@ -1,0 +1,25 @@
+total 35328
+-rw-r----- 1 liberjul plb 2357737 Jun 11 20:23 JL_0000_SRR3991297_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1327489 Jun 11 20:23 JL_0001_SRR3991298_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1704302 Jun 11 20:23 JL_0002_SRR3991299_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1429700 Jun 11 20:23 JL_0003_SRR3991300_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1486151 Jun 11 20:23 JL_0004_SRR3991301_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1508381 Jun 11 20:23 JL_0005_SRR3991302_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1465792 Jun 11 20:23 JL_0006_SRR3991303_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1537141 Jun 11 20:23 JL_0007_SRR3991304_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1477038 Jun 11 20:23 JL_0008_SRR3991305_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1574543 Jun 11 20:23 JL_0009_SRR3991306_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1560516 Jun 11 20:23 JL_0010_SRR3991307_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1666892 Jun 11 20:23 JL_0011_SRR3991308_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1135250 Jun 11 20:23 JL_0012_SRR3991309_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1087157 Jun 11 20:23 JL_0013_SRR3991310_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1188401 Jun 11 20:23 JL_0014_SRR3991311_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1343306 Jun 11 20:23 JL_0015_SRR3991312_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1318662 Jun 11 20:23 JL_0016_SRR3991313_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1312449 Jun 11 20:23 JL_0017_SRR3991314_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1456606 Jun 11 20:23 JL_0018_SRR3991315_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1402096 Jun 11 20:23 JL_0019_SRR3991316_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1422309 Jun 11 20:23 JL_0020_SRR3991317_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 2025864 Jun 11 20:23 JL_0021_SRR3991318_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1325615 Jun 11 20:23 JL_0022_SRR3991319_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1154983 Jun 11 20:23 JL_0023_SRR3991320_L001_R1_001.fastq.gz

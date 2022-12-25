@@ -1,0 +1,21 @@
+#!/bin/bash --login
+########## Define Resources Needed with SBATCH Lines ##########
+
+#SBATCH --time=12:00:00             # limit of wall clock time - how long the job will run (same as -t)
+#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
+#SBATCH --cpus-per-task=24          # number of CPUs (or cores) per task (same as -c)
+#SBATCH --mem=1G                   # memory required per node - amount of memory (in bytes)
+#SBATCH --job-name=02_rename_and_zip       # you can give your job a name for easier identification (same as -J)
+#SBATCH --output=%x-%j.SLURMout
+
+########## Command Lines to Run ##########
+
+FP=~/He_Lab/phyllosphere_meta-analysis/SRA_files
+
+for i in $FP/*_se/*.cutadapt.fastq
+do
+  mv $i $(dirname -- $i)/JL_$(basename -- ${i%.cutadapt*})_L001_R1_001.fastq
+  gzip $(dirname -- $i)/JL_$(basename -- ${i%.cutadapt*})_L001_R1_001.fastq
+done
+
+scontrol show job $SLURM_JOB_ID     ### write job information to output file

@@ -1,0 +1,24 @@
+#!/bin/bash --login
+########## Define Resources Needed with SBATCH Lines ##########
+
+#SBATCH --time=06:00:00             # limit of wall clock time - how long the job will run (same as -t)
+#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
+#SBATCH --cpus-per-task=1          # number of CPUs (or cores) per task (same as -c)
+#SBATCH --mem=1G                   # memory required per node - amount of memory (in bytes)
+#SBATCH --job-name=00_sample_large_srr_accs       # you can give your job a name for easier identification (same as -J)
+#SBATCH --output=%x-%j.SLURMout
+
+########## Command Lines to Run ##########
+
+FP=~/He_Lab/phyllosphere_meta-analysis/SRA_files
+
+for i in SRR12518229 SRR12518228 SRR6310509 SRR6310508 SRR6310507 SRR6310506 SRR3746049 SRR3746050 ERR2092794 SRR10915970 SRR14306241 SRR9678158 SRR10915954 ERR2092793
+do
+  echo $i
+  seqtk sample -s 1234 $FP/uncut_seqs/"$i"_1.fastq.gz 100000 > $FP/uncut_seqs/"$i"_1.sampled.fastq
+  seqtk sample -s 1234 $FP/uncut_seqs/"$i"_2.fastq.gz 100000 > $FP/uncut_seqs/"$i"_2.sampled.fastq
+  gzip $FP/uncut_seqs/"$i"_1.sampled.fastq
+  gzip $FP/uncut_seqs/"$i"_2.sampled.fastq
+done
+
+scontrol show job $SLURM_JOB_ID     ### write job information to output file

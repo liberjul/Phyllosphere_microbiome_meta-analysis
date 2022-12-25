@@ -1,0 +1,5 @@
+total 4608
+-rw-r----- 1 liberjul plb 1364683 Jun 10 14:13 JL_0034_SRR11887855_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1346538 Jun 10 14:13 JL_0035_SRR11887856_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb  145320 Jun 10 14:13 JL_0036_SRR11887857_L001_R1_001.fastq.gz
+-rw-r----- 1 liberjul plb 1749823 Jun 10 14:13 JL_0037_SRR11887858_L001_R1_001.fastq.gz

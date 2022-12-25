@@ -1,0 +1,131 @@
+#!/bin/bash --login
+########## Define Resources Needed with SBATCH Lines ##########
+
+#SBATCH --time=12:00:00             # limit of wall clock time - how long the job will run (same as -t)
+#SBATCH --ntasks=1                 # number of tasks - how many tasks (nodes) that you require (same as -n)
+#SBATCH --cpus-per-task=24          # number of CPUs (or cores) per task (same as -c)
+#SBATCH --mem=1G                   # memory required per node - amount of memory (in bytes)
+#SBATCH --job-name=02_rename_and_zip       # you can give your job a name for easier identification (same as -J)
+#SBATCH --output=%x-%j.SLURMout
+
+########## Command Lines to Run ##########
+
+FP=~/He_Lab/phyllosphere_meta-analysis/SRA_files
+
+for FOLDER in "Bacteria_v5-v6_se" "Bacteria_v1-v3_pe" "Bacteria_v4-v5_se" "Bacteria_v3-v4_pe" "Bacteria_v4_pe" "Bacteria_v5-v6_pe" "Bacteria_v6-v7_pe" #"Fungi_ITS1-ITS2_se" # "Fungi_ITS2_pe" #"Fungi_ITS1_pe" "Fungi_ITS1-ITS2_pe" # "Bacteria_v1-v3_pe" "Bacteria_v3-v4_pe"  "Bacteria_v5-v6_pe" "Bacteria_v6-v7_pe"
+do
+  for i in $FP/$FOLDER/*.fastq.gz
+  do
+    if [[ $i == *"cutadapt"* ]] ; then
+      ACC=$(echo $(basename -- $i) | cut -d'_' -f2)
+      DIR=$(echo $(basename -- $i) | cut -d'_' -f4)
+      mv $i $(dirname -- $i)/JL_"$ACC"_L001_"$DIR"_001.fastq.gz
+    else
+      ACC=$(echo $(basename -- $i) | cut -d'_' -f3)
+      DIR=$(echo $(basename -- $i) | cut -d'_' -f5)
+      mv -n $i $(dirname -- $i)/JL_"$ACC"_L001_"$DIR"_001.fastq.gz
+    fi
+  done
+done
+
+for FOLDER in  "Bacteria_v5-v6_se" # "Fungi_ITS1-ITS2_pe" "Fungi_ITS2_pe"
+do
+  for i in $FP/$FOLDER/*.fastq.gz
+  do
+    if  [[ $i == *"JL_SRR"* ]] ; then
+      echo ""
+      # ACC=$(echo $(basename -- $i) | cut -d'_' -f2)
+      # DIR=$(echo $(basename -- $i) | cut -d'_' -f4)
+      # mv -n $i $(dirname -- $i)/JL_"$ACC"_L001_"$DIR"_001.fastq.gz
+    else
+      ACC=$(echo $(basename -- $i) | cut -d'_' -f3)
+      DIR=$(echo $(basename -- $i) | cut -d'_' -f5)
+      mv $i $(dirname -- $i)/JL_"$ACC"_L001_"$DIR"_001.fastq.gz
+    fi
+  done
+done
+
+for i in $FP/Fungi_ITS1-ITS2_pe/*.fastq.gz
+do
+  ACC=$(echo $(basename -- $i) | cut -d'_' -f2)
+  if ! [ -f $(dirname -- $i)/JL_"$ACC"_L001_R2_001.fastq.gz ] ; then
+    echo $ACC
+  fi
+done
+
+FP=~/He_Lab/phyllosphere_meta-analysis/SRA_files
+QFP=$FP/../Qiime2_files/feature_table
+for REG in "v1-v3" "v3-v4" "v4" "v4-v5" "v5-v6" "v6-v7"
+do
+  for LAYOUT in "pe" "se"; do
+    if [ -f $QFP/dada2-stats_1_Bacteria_"$REG"_"$LAYOUT".qza ] && ! [ -d $QFP/dada2-stats_1_Bacteria_"$REG"_"$LAYOUT" ]; then
+      mkdir -p $QFP/dada2-stats_1_Bacteria_"$REG"_"$LAYOUT"/
+      cp $QFP/dada2-stats_1_Bacteria_"$REG"_"$LAYOUT".qza $QFP/dada2-stats_1_Bacteria_"$REG"_"$LAYOUT".zip
+      unzip $QFP/dada2-stats_1_Bacteria_"$REG"_"$LAYOUT".zip -d $QFP/dada2-stats_1_Bacteria_"$REG"_"$LAYOUT"
+      grep -P "JL_" $QFP/dada2-stats_1_Bacteria_"$REG"_"$LAYOUT"/*/data/stats.tsv | grep -P "\t0$" | grep -o "JL_...." > filtered_out_seqs_Bacteria_"$REG"_"$LAYOUT".txt
+    fi
+  done
+done
+
+grep -P "JL_" ../Qiime2_files/feature_table/dada2-stats_1_Fungi_ITS1_pe/data/stats.tsv | grep -P "\t0" | grep -o "JL_...." > filtered_put_seqs_ITS1.txt
+grep -P "JL_" ../Qiime2_files/feature_table/dada2-stats_1_Fungi_ITS1-ITS2_pe/data/stats.tsv | grep -P "\t0" | grep -o "JL_...." > no_reads_Fungi_ITS1-ITS2_pe.txt
+while IFS= read -r line
+do
+  echo $FP/Fungi_ITS1-ITS2_pe/$line*_R1_*
+  mv $FP/Fungi_ITS1-ITS2_pe/$line*_R1_* $FP/Fungi_ITS1-ITS2_se
+done < $FP/../scripts/no_reads_Fungi_ITS1-ITS2_pe.txt
+
+
+for REG in "v1-v3" "v3-v4" "v4" "v4-v5" "v5-v6" "v6-v7" # "Fungi_ITS1_pe" "Fungi_ITS2_pe" #"Bacteria_v1-v3_pe" "Bacteria_v3-v4_pe" "Bacteria_v4_pe" "Bacteria_v5-v6_pe" "Bacteria_v6-v7_pe"   "Fungi_ITS1-ITS2_pe" "Bacteria_v1-v3_pe"
+do
+  ll $FP/Bacteria_"$REG"_*e/ | grep -o ".RR[0-9]*" > bac_"$REG"_cur.txt
+  grep -P "\t$REG\t" $FP/../scripts/srr_aggregatted_by_target_region.txt | grep -o ".RR[0-9]*" > bac_"$REG"_assigned.txt
+  python $FP/../scripts/compare_columns.py bac_"$REG"_cur.txt bac_"$REG"_assigned.txt > extras_bac_"$REG".txt
+  python $FP/../scripts/compare_columns.py bac_"$REG"_assigned.txt bac_"$REG"_cur.txt > missing_bac_"$REG".txt
+done
+ll extras_bac_*.txt
+ll missing_bac_*.txt
+
+
+
+FP=~/He_Lab/phyllosphere_meta-analysis/SRA_files
+
+REG="v5-v6"
+while IFS= read -r line
+do
+  # ACC=$(echo $line | cut -d' ' -f5)
+  echo $FP/Bacteria_"$REG"_*e/*$line*
+  rm $FP/Bacteria_"$REG"_*e/*$line*
+done < $FP/../scripts/extras_bac_"$REG".txt
+
+FP=~/He_Lab/phyllosphere_meta-analysis/SRA_files
+
+while IFS= read -r line
+do
+  ACC=$(echo $line | cut -d' ' -f5)
+  echo $FP/Bacteria_v4_pe/*$ACC*
+  # $FP/Bacteria_v4_pe/*$ACC*
+done < $FP/../scripts/not_in_list_Fungi_ITS1-ITS2_pe.txt
+
+for FOLDER in "Bacteria_v5-v6_se" # "Bacteria_v1-v3_pe" "Bacteria_v4-v5_se" "Bacteria_v3-v4_pe" "Bacteria_v4_pe" "Bacteria_v5-v6_pe" "Bacteria_v6-v7_pe" # "Fungi_ITS1_pe" "Fungi_ITS2_pe" #"Bacteria_v1-v3_pe" "Bacteria_v3-v4_pe" "Bacteria_v4_pe" "Bacteria_v5-v6_pe" "Bacteria_v6-v7_pe"   "Fungi_ITS1-ITS2_pe" "Bacteria_v1-v3_pe"
+do
+  COUNT=0
+  for i in $FP/$FOLDER/*R1_001.fastq.gz
+  do
+    ACC=$(echo $(basename -- $i) | cut -d'_' -f2)
+    SAM_NUM=$(printf '%04d' $COUNT)
+    echo $ACC
+    mv $i $(dirname -- $i)/JL_"$SAM_NUM"_"$ACC"_L001_R1_001.fastq.gz
+    let COUNT++
+  done
+  COUNT=0
+  for i in $FP/$FOLDER/*R2_001.fastq.gz
+  do
+    ACC=$(echo $(basename -- $i) | cut -d'_' -f2)
+    SAM_NUM=$(printf '%04d' $COUNT)
+    echo $ACC
+    mv $i $(dirname -- $i)/JL_"$SAM_NUM"_"$ACC"_L001_R2_001.fastq.gz
+    let COUNT++
+  done
+done
+scontrol show job $SLURM_JOB_ID     ### write job information to output file

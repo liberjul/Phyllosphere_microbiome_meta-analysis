@@ -1,0 +1,44 @@
+Alismatales BYQM
+Apiales AJFN
+Arecales 'Elagu_v2.0'
+Asparagales BLAJ
+Asterales AFQQ
+Brassicales Arath_TAIR10
+Canellales SJEV
+Caryophyllales AAXJ
+Celastrales IHCQ
+Chloranthales OSHQ
+Cornales BFJL
+Cyatheales EWXK
+Dicranales FFPD
+Dipsacales CAQZ
+Ericales ADHK
+Fabales CMFF
+Fagales CWZU
+Gentianales DSUV
+Grimmiales ABCD
+Hypnales DHWX
+Lamiales ATYL
+Lycopodiales CBAE
+Magnoliales DHPO
+Malpighiales AEPI
+Malvales AJJE
+Marchantiales HMHL
+Metteniusales
+Myrtales AJJE
+Oxalidales JHCN
+Picramniales
+Pinidae
+Piperales CSSK
+Poales BPKH
+Polypodiales AFPO
+Polytrichales SZYG
+Ranunculales AUGV
+Rhizogoniales CMEQ
+Rosales ACFP
+Santalales BSEY
+Sapindales BCAA
+Solanales AHRN
+Sphagnales GOWD
+Vitales BBBA
+Zingiberales BDJQ
